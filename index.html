@@ -1,10 +1,208 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Cinema Master</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinema Master 🎬</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b0f;
+    color: white;
+}
+
+header {
+    background: #15151d;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.hero {
+    padding: 80px 7%;
+    text-align: center;
+    background: linear-gradient(135deg, #171722, #09090d);
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #bbb;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.search {
+    width: 90%;
+    max-width: 500px;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+}
+
+section {
+    padding: 40px 7%;
+}
+
+section h2 {
+    margin-bottom: 25px;
+}
+
+.movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.movie {
+    background: #17171f;
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.movie:hover {
+    transform: translateY(-5px);
+}
+
+.poster {
+    height: 220px;
+    background: linear-gradient(135deg, #29293a, #111118);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.movie h3 {
+    margin-bottom: 8px;
+}
+
+.movie p {
+    color: #aaa;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #15151d;
+    color: #aaa;
+}
+</style>
 </head>
+
 <body>
-    <h1>🎬 Cinema Master</h1>
-    <p>Welcome to Cinema Master!</p>
+
+<header>
+    <div class="logo">🎬 Cinema Master</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#movies">Movies</a>
+        <a href="#about">About</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <h1>Welcome to Cinema Master</h1>
+    <p>Discover movies, reviews and the latest cinema updates.</p>
+
+    <input
+        class="search"
+        type="text"
+        placeholder="🔎 Search movies..."
+        onkeyup="searchMovies()"
+        id="searchBox"
+    >
+</div>
+
+<section id="movies">
+    <h2>🔥 Popular Movies</h2>
+
+    <div class="movies">
+
+        <div class="movie">
+            <div class="poster">🎥</div>
+            <h3>Movie One</h3>
+            <p>⭐ 8.5/10</p>
+        </div>
+
+        <div class="movie">
+            <div class="poster">🎬</div>
+            <h3>Movie Two</h3>
+            <p>⭐ 8.2/10</p>
+        </div>
+
+        <div class="movie">
+            <div class="poster">🍿</div>
+            <h3>Movie Three</h3>
+            <p>⭐ 7.9/10</p>
+        </div>
+
+        <div class="movie">
+            <div class="poster">🎞️</div>
+            <h3>Movie Four</h3>
+            <p>⭐ 7.7/10</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Cinema Master</h2>
+    <p>
+        Cinema Master is a movie information website where you can
+        discover movies, ratings, reviews and cinema news.
+    </p>
+</section>
+
+<footer>
+    © 2026 Cinema Master | Made with ❤️
+</footer>
+
+<script>
+function searchMovies() {
+    let input = document.getElementById("searchBox").value.toLowerCase();
+    let movies = document.querySelectorAll(".movie");
+
+    movies.forEach(function(movie) {
+        let title = movie.querySelector("h3").innerText.toLowerCase();
+
+        if (title.includes(input)) {
+            movie.style.display = "block";
+        } else {
+            movie.style.display = "none";
+        }
+    });
+}
+</script>
+
 </body>
 </html>
